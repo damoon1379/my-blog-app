@@ -1,6 +1,17 @@
 import Link from "next/link"
 import {prisma} from "@/lib/prisma"
 
+interface Post {
+  id: string
+  title: string
+  slug: string
+  excerpt: string | null
+  author: {
+    name: string
+  } | null
+  createdAt: Date
+}
+
 export default async function Home(){
   const posts = await prisma.post.findMany({
     where:{published:true},
@@ -37,7 +48,7 @@ export default async function Home(){
           <p className="text-gray-500">No Posts yet. Check back soon!</p>
         ):(
           <div className="space-y-6">
-            {posts.map((post)=>(
+            {posts.map((post: Post)=>(
               <article key={post.id} className="border rounded-lg p-6 hover:shadow-lg transition-shadow">
                 <Link href={`/blog/${post.slug}`}>
                   <h3 className="text-2xl font-semibold hover:text-blue-600 mb-2">

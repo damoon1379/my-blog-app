@@ -101,7 +101,7 @@ export default function Dashboard(){
         </div>
       ) : (
         <div className="space-y-4">
-          {posts.map((post) => (
+          {posts.map((post: Post) => (
             <div
               key={post.id}
               className="border rounded-lg p-4 hover:shadow-md transition-shadow"
