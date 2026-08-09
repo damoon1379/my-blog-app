@@ -41,7 +41,7 @@ npm install
 
 - create .env file
 - Open .env and add your configuration:
-  # Database URL (choose one option below)
+  # Database URL 
   DATABASE_URL="your-database-connection-string"
 
   # Authentication
@@ -50,8 +50,8 @@ npm install
 
 ### 4. Set Up the Database
 
-ypu can use options such as: neon,supabase or local postgreSQL 
-i used supabase for this project's development, after creating a projecton supabase add the following 
+ypu can pick options such as: neon,supabase or local postgreSQL 
+i used supabase for this project's development, after creating a project on supabase add the following 
 line in .env file:
 DATABASE_URL="postgresql://postgres.[project-ref]:[password]@aws-0-[region].pooler.supabase.com:5432/postgres"
 
