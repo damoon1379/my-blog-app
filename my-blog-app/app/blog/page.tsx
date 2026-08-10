@@ -1,7 +1,7 @@
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
 
-export const revalidate = 10  
+export const revalidate = 0 
 
 interface Post {
   id: string
