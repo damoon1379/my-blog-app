@@ -1,6 +1,6 @@
 "use client"
 import{useSession} from "next-auth/react"
-import{useEffect,useState} from "react"
+import{useEffect,useState,use} from "react"
 import dynamic from "next/dynamic"
 import {useRouter} from "next/navigation"
 
@@ -26,6 +26,16 @@ export default function EditPostPage({params}:{params:Promise<{slug:string}>}){
   const [isPublished, setIsPublished] = useState(false)
 
     useEffect(()=>{
+        setIsMounted(true)
+    },[])
+
+    useEffect(() => {
+    if (status === "unauthenticated") {
+      router.push("/auth/signin")
+    }
+  }, [status, router])
+  
+    useEffect(()=>{
                             
         const unwrapParams = async()=>{
             try{
@@ -37,19 +47,20 @@ export default function EditPostPage({params}:{params:Promise<{slug:string}>}){
                 router.push("/dashboard")
             }
         }
-        unwrapParams()
+
+       unwrapParams()
     },[params,router])
 
     useEffect(()=>{
-        setIsMounted(true)
         if(session?.user && slug){
             console.log("fetchpost useeffect")
             fetchPost()
         }
-    },[session,router])
+    },[session,slug])
 
     const fetchPost = async()=>{
         try{
+           
         const res = await fetch(`/api/posts/${slug}`)
         if(res.ok){
             const data = await res.json()

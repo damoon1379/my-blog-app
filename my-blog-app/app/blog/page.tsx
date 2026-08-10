@@ -1,6 +1,8 @@
 import Link from "next/link"
 import { prisma } from "@/lib/prisma"
 
+export const revalidate = 10  
+
 interface Post {
   id: string
   title: string
@@ -10,6 +12,7 @@ interface Post {
     name: string
   } | null
   createdAt: Date
+  published:boolean
 }
 
 export default async function BlogPage(){
