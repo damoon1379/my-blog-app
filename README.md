@@ -25,7 +25,7 @@ A complete blog platform built with Next.js 15, PostgreSQL, and Prisma. Features
 
 ## 🌐 Live demo:
 
-**Visit the live site:** https://my-blog-hoaksil1o-damoon1379s-projects.vercel.app
+**Visit the live site:** https://my-blog-app-wheat-eight.vercel.app
 ## 🚀 Quick Start
 
 ### Prerequisites
